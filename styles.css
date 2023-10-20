@@ -1,4 +1,4 @@
-.calculatorStyle{
+.calculatorStyle {
 	background-color: black;
 	color: white;
 	width: 500px;
@@ -8,7 +8,7 @@
 	margin-left: 650px;
 	margin-top: 100px;
 }
-.button{
+.button {
 	position: relative;
 	cursor: pointer;
 	background-color: #778899;
@@ -20,11 +20,11 @@
 	border-radius: 5px;
 	
 }
-.button.operation{
+.button.operation {
 	background-color: #B0C4DE;
 	
 }
-.calculatorScreen{
+.calculatorScreen {
 	height:200px;
 	padding:10px;
 	font-size: 52px;
