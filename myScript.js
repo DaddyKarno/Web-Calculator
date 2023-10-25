@@ -3,10 +3,15 @@ let input2 = "";
 let result;
 let sign = "";
 let finish = false;
-const digit = ["0", "1", "3", "4", "5", "6", "7", "8", "9", "."];
+const digit = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
 const action = ["+", "-", "/", "*"];
 
 const screnResult = document.getElementById("result");
+function endCalculate() {
+  finish = false;
+  input1 = String(result);
+  input2 = "";
+}
 function clear() {
   input1 = "";
   input2 = "";
@@ -30,27 +35,6 @@ function handleActionClick(action) {
 function saveResult() {
   localStorage.setItem("result:", result.toString());
 }
-document.getElementById("resultBtn").onclick = function btnResult() {
-  switch (sign) {
-    case "+": {
-      result = Number(input1) + Number(input2);
-      screnResult.textContent = result;
-    }
-    case "-": {
-      result = Number(input1) - Number(input2);
-      screnResult.textContent = result;
-    }
-    case "/": {
-      result = Number(input1) / Number(input2);
-      screnResult.textContent = result;
-    }
-    case "*": {
-      result = Number(input1) * Number(input2);
-      screnResult.textContent = result;
-    }
-  }
-  saveResult();
-};
 document.getElementById("plus").onclick = () => handleActionClick("+");
 document.getElementById("minus").onclick = () => handleActionClick("-");
 document.getElementById("divide").onclick = () => handleActionClick("/");
@@ -66,3 +50,30 @@ document.getElementById("numberEight").onclick = () => handleNumberClick("8");
 document.getElementById("numberNine").onclick = () => handleNumberClick("9");
 document.getElementById("numberZero").onclick = () => handleNumberClick("0");
 document.getElementById("clearBtn").onclick = clear;
+document.getElementById("resultBtn").onclick = function btnResult() {
+  switch (sign) {
+    case "+": {
+      result = Number(input1) + Number(input2);
+      screnResult.textContent = result;
+      console.log(input1);
+      break;
+    }
+    case "-": {
+      result = Number(input1) - Number(input2);
+      screnResult.textContent = result;
+      break;
+    }
+    case "/": {
+      result = Number(input1) / Number(input2);
+      screnResult.textContent = result;
+      break;
+    }
+    case "*": {
+      result = Number(input1) * Number(input2);
+      screnResult.textContent = result;
+      break;
+    }
+  }
+  endCalculate();
+  saveResult();
+};
