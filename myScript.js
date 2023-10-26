@@ -5,6 +5,7 @@ let sign = "";
 let finish = false;
 const digit = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
 const action = ["+", "-", "/", "*"];
+let intermediateInput = document.getElementById("intermediateInput");
 
 const screnResult = document.getElementById("result");
 function endCalculate() {
@@ -18,6 +19,7 @@ function clear() {
   sign = "";
   finish = false;
   screnResult.textContent = input1;
+  intermediateInput.textContent = "0";
 }
 function handleNumberClick(digit) {
   if (finish === false) {
@@ -27,6 +29,7 @@ function handleNumberClick(digit) {
     input2 += digit;
     screnResult.textContent = input2;
   }
+  intermediateInput.textContent = input1 + sign + input2;
 }
 function handleActionClick(action) {
   finish = true;
@@ -55,7 +58,6 @@ document.getElementById("resultBtn").onclick = function btnResult() {
     case "+": {
       result = Number(input1) + Number(input2);
       screnResult.textContent = result;
-      console.log(input1);
       break;
     }
     case "-": {
@@ -64,6 +66,10 @@ document.getElementById("resultBtn").onclick = function btnResult() {
       break;
     }
     case "/": {
+      if (input2 === "0") {
+        screnResult.textContent = "Ошибка! Делить на 0 нельзя";
+        return;
+      }
       result = Number(input1) / Number(input2);
       screnResult.textContent = result;
       break;
@@ -74,6 +80,7 @@ document.getElementById("resultBtn").onclick = function btnResult() {
       break;
     }
   }
+  intermediateInput.textContent = "0";
   endCalculate();
   saveResult();
 };
