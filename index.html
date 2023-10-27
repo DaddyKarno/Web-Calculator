@@ -3,33 +3,48 @@
   <head>
     <title>Calculator</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/figma.css" />
   </head>
   <body>
+    
     <div class="calculatorStyle">
+      <div class="display">
       <div class="calculatorScreen">
         <p id="result">0</p>
         <div class="Intermediate_Input"><p id="intermediateInput">0</p></div>
       </div>
-      <div class="buttons">
-        <button class="button" id="numberOne">1</button>
-        <button class="button" id="numberTwo">2</button>
-        <button class="button" id="numberThree">3</button>
-        <button class="button operation" id="plus">+</button><br />
-        <button class="button" id="numberFour">4</button>
-        <button class="button" id="numberFive">5</button>
-        <button class="button" id="numberSix">6</button>
-        <button class="button operation" id="minus">-</button><br />
-        <button class="button" id="numberSeven">7</button>
-        <button class="button" id="numberEight">8</button>
-        <button class="button" id="numberNine">9</button>
-        <button class="button operation" id="multiply">*</button><br />
-        <button class="button operation" id="clearBtn">C</button>
-        <button class="button" id="numberZero">0</button>
-        <button class="button operation" id="resultBtn">=</button>
-        <button class="button operation" id="divide">/</button>
+      </div>
+      <div class="groupButtons">
+        <div class="buttons">
+          <button class="button" id="numberOne">1</button>
+          <button class="button" id="numberFour">4</button>
+          <button class="button" id="numberSeven">7</button>
+        </div>
+        <div class="buttons">
+          <button class="button" id="numberTwo">2</button>
+          <button class="button" id="numberFive">5</button>
+          <button class="button" id="numberEight">8</button>
+          
+        </div>
+        <div class="buttons">
+          <button class="button" id="numberThree">3</button>
+          <button class="button" id="numberSix">6</button>
+          <button class="button" id="numberNine">9</button>
+        </div>
+        <div class="buttons">
+          <button class="button operation" id="clearBtn">C</button>
+          <button class="button" id="numberZero">0</button>
+          <button class="button operation" id="resultBtn">=</button>
+        </div>
+        <div class="operationButtons">
+          <button class="button operation" id="plus">+</button>
+          <button class="button operation" id="minus">-</button>
+          <button class="button operation" id="multiply">*</button>
+          <button class="button operation" id="divide">/</button>
+        </div>
       </div>
     </div>
+  </div>
     <script src="scripts/myScript.js"></script>
   </body>
 </html>

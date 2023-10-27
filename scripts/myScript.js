@@ -79,6 +79,10 @@ document.getElementById("resultBtn").onclick = function btnResult() {
       screnResult.textContent = result;
       break;
     }
+    default: {
+      screnResult.textContent = "Ошибка, вы забыли знак";
+      break;
+    }
   }
   intermediateInput.textContent = "0";
   endCalculate();
