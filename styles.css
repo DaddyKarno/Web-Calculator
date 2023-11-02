@@ -1,0 +1,32 @@
+.calculatorStyle {
+	background-color: black;
+	color: white;
+	width: 500px;
+	height:700px;
+	border: 5px solid gray;
+	border-radius: 5px;
+	margin-left: 650px;
+	margin-top: 100px;
+}
+.button {
+	position: relative;
+	cursor: pointer;
+	background-color: #778899;
+	color: white;
+	width: 119px;
+	height:116px;
+	font-size: 36px;	
+	margin: 1px;
+	border-radius: 5px;
+	
+}
+.button.operation {
+	background-color: #B0C4DE;
+	
+}
+.calculatorScreen {
+	height:200px;
+	padding:10px;
+	font-size: 52px;
+	text-align:right;
+}
