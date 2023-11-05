@@ -1,10 +1,17 @@
 let input1 = "";
 let input2 = "";
-let result = 0;
+let result;
 let sign = "";
 let finish = false;
+const digit = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
+const action = ["+", "-", "/", "*"];
 
 const screnResult = document.getElementById("result");
+function endCalculate() {
+  finish = false;
+  input1 = String(result);
+  input2 = "";
+}
 function clear() {
   input1 = "";
   input2 = "";
@@ -12,138 +19,61 @@ function clear() {
   finish = false;
   screnResult.textContent = input1;
 }
-
-document.getElementById("plus").onclick = function btnPlus() {
+function handleNumberClick(digit) {
+  if (finish === false) {
+    input1 += digit;
+    screnResult.textContent = input1;
+  } else {
+    input2 += digit;
+    screnResult.textContent = input2;
+  }
+}
+function handleActionClick(action) {
   finish = true;
-  sign = "+";
-};
-document.getElementById("minus").onclick = function btnMinus() {
-  finish = true;
-  sign = "-";
-};
-document.getElementById("divide").onclick = function btnDivide() {
-  finish = true;
-  sign = "/";
-};
-document.getElementById("multiply").onclick = function btnMultiply() {
-  finish = true;
-  sign = "*";
-};
-document.getElementById("resultBtn").onclick = function btnResult() {
-  if (sign === "+") {
-    result = Number(input1) + Number(input2);
-    screnResult.textContent = result;
-  } else if (sign === "-") {
-    result = Number(input1) - Number(input2);
-    screnResult.textContent = result;
-  } else if (sign === "*") {
-    result = Number(input1) * Number(input2);
-    screnResult.textContent = result;
-  } else if (sign === "/") {
-    result = Number(input1) / Number(input2);
-    screnResult.textContent = result;
-  }
-};
-document.getElementById("numberOne").onclick = function btn1() {
-  if (finish === false) {
-    input1 += "1";
-    screnResult.textContent = input1;
-  } else {
-    input2 += "1";
-    screnResult.textContent = input2;
-  }
-  console.log(input1);
-};
-document.getElementById("numberTwo").onclick = function btn2() {
-  if (finish === false) {
-    input1 += "2";
-    screnResult.textContent = input1;
-  } else {
-    input2 += "2";
-    screnResult.textContent = input2;
-  }
-  console.log(input1);
-};
-
-document.getElementById("numberThree").onclick = function btn3() {
-  if (finish === false) {
-    input1 += "3";
-    screnResult.textContent = input1;
-  } else {
-    input2 += "3";
-    screnResult.textContent = input2;
-  }
-  console.log(input1);
-};
-document.getElementById("numberFour").onclick = function btn4() {
-  if (finish === false) {
-    input1 += "4";
-    screnResult.textContent = input1;
-  } else {
-    input2 += "4";
-    screnResult.textContent = input2;
-  }
-  console.log(input1);
-};
-document.getElementById("numberFive").onclick = function btn5() {
-  if (finish === false) {
-    input1 += "5";
-    screnResult.textContent = input1;
-  } else {
-    input2 += "5";
-    screnResult.textContent = input2;
-  }
-  console.log(input1);
-};
-document.getElementById("numberSix").onclick = function btn6() {
-  if (finish === false) {
-    input1 += "6";
-    screnResult.textContent = input1;
-  } else {
-    input2 += "6";
-    screnResult.textContent = input2;
-  }
-  console.log(input1);
-};
-document.getElementById("numberSeven").onclick = function btn7() {
-  if (finish === false) {
-    input1 += "7";
-    screnResult.textContent = input1;
-  } else {
-    input2 += "7";
-    screnResult.textContent = input2;
-  }
-  console.log(input1);
-};
-document.getElementById("numberEight").onclick = function btn8() {
-  if (finish === false) {
-    input1 += "8";
-    screnResult.textContent = input1;
-  } else {
-    input2 += "8";
-    screnResult.textContent = input2;
-  }
-  console.log(input1);
-};
-document.getElementById("numberNine").onclick = function btn9() {
-  if (finish === false) {
-    input1 += "9";
-    screnResult.textContent = input1;
-  } else {
-    input2 += "9";
-    screnResult.textContent = input2;
-  }
-  console.log(input1);
-};
-document.getElementById("numberZero").onclick = function btn0() {
-  if (finish === false) {
-    input1 += "0";
-    screnResult.textContent = input1;
-  } else {
-    input2 += "0";
-    screnResult.textContent = input2;
-  }
-  console.log(input1);
-};
-
+  sign = action;
+}
+function saveResult() {
+  localStorage.setItem("result:", result.toString());
+}
+document.getElementById("plus").onclick = () => handleActionClick("+");
+document.getElementById("minus").onclick = () => handleActionClick("-");
+document.getElementById("divide").onclick = () => handleActionClick("/");
+document.getElementById("multiply").onclick = () => handleActionClick("*");
+document.getElementById("numberOne").onclick = () => handleNumberClick("1");
+document.getElementById("numberTwo").onclick = () => handleNumberClick("2");
+document.getElementById("numberThree").onclick = () => handleNumberClick("3");
+document.getElementById("numberFour").onclick = () => handleNumberClick("4");
+document.getElementById("numberFive").onclick = () => handleNumberClick("5");
+document.getElementById("numberSix").onclick = () => handleNumberClick("6");
+document.getElementById("numberSeven").onclick = () => handleNumberClick("7");
+document.getElementById("numberEight").onclick = () => handleNumberClick("8");
+document.getElementById("numberNine").onclick = () => handleNumberClick("9");
+document.getElementById("numberZero").onclick = () => handleNumberClick("0");
 document.getElementById("clearBtn").onclick = clear;
+document.getElementById("resultBtn").onclick = function btnResult() {
+  switch (sign) {
+    case "+": {
+      result = Number(input1) + Number(input2);
+      screnResult.textContent = result;
+      console.log(input1);
+      break;
+    }
+    case "-": {
+      result = Number(input1) - Number(input2);
+      screnResult.textContent = result;
+      break;
+    }
+    case "/": {
+      result = Number(input1) / Number(input2);
+      screnResult.textContent = result;
+      break;
+    }
+    case "*": {
+      result = Number(input1) * Number(input2);
+      screnResult.textContent = result;
+      break;
+    }
+  }
+  endCalculate();
+  saveResult();
+};
